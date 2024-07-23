@@ -1,0 +1,17 @@
+# menyembunyikan list file/direktori
+  Options -Indexes
+
+# menyembunyikan signature/tanda server
+ServerSignature Off
+
+Order Allow,Deny
+Allow from 127.0.01
+Allow from all
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L]
+    </IfModule>
+
